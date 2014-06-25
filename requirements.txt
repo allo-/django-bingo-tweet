@@ -1,0 +1,2 @@
+django-bingo
+tweepy
