@@ -17,9 +17,9 @@ TWITTER_ACCESS_TOKEN_SECRET = getattr(
 
 
 @receiver(post_save, sender=Game)
-def tweet_game(sender, instance, **kwargs):
+def tweet_game(sender, instance, created, **kwargs):
     game = instance
-    if TWITTER_API_KEY and TWITTER_API_SECRET and \
+    if created and TWITTER_API_KEY and TWITTER_API_SECRET and \
        TWITTER_ACCESS_TOKEN and TWITTER_ACCESS_TOKEN_SECRET:
         auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET)
         auth.set_access_token(TWITTER_ACCESS_TOKEN,
