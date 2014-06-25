@@ -1,2 +1,2 @@
 recursive-include bingo_tweets *.po
-include AUTHORS LICENSE MANIFEST.in README.md requirements.txt setup.py
+include AUTHORS ChangeLog LICENSE MANIFEST.in README.md requirements.txt setup.py
