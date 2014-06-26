@@ -14,6 +14,10 @@ TWITTER_ACCESS_TOKEN = getattr(settings, "TWITTER_ACCESS_TOKEN", None)
 TWITTER_ACCESS_TOKEN_SECRET = getattr(
     settings,
     "TWITTER_ACCESS_TOKEN_SECRET", None)
+TWEET_TEXT = getattr(settings, "TWEET_TEXT",
+    _("New game: http://{domain:s}{absolute_url:s}"))
+TWEET_TEXT_WITH_TOPIC = getattr(settings, "TWEET_TEXT_WITH_TOPIC",
+    _("New game: http://{domain:s}{absolute_url:s} (Topic: {topic:s})"))
 
 
 @receiver(post_save, sender=Game)
@@ -25,11 +29,13 @@ def tweet_game(sender, instance, created, **kwargs):
         auth.set_access_token(TWITTER_ACCESS_TOKEN,
                               TWITTER_ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
-        tweet = _("New game: http://{domain:s}{absolute_url:s}").format(
-            domain=game.site.domain, absolute_url=game.get_absolute_url())
         if game.description:
-            tweet += " " + _("(Topic: {topic})").format(topic=game.description)
+            tweet = TWEET_TEXT_WITH_TOPIC.format(
+                domain=game.site.domain,
+                absolute_url=game.get_absolute_url(),
+                topic=game.description)
+        else:
+            tweet = TWEET_TEXT.format(
+                domain=game.site.domain,
+                absolute_url=game.get_absolute_url())
         api.update_status(tweet)
-
-
-# Create your models here.
