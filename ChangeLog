@@ -2,3 +2,4 @@ django-bingo 1.0.1 ():
 	* fixed: only tweet on Game creation, not when editing Game objects.
 	* added: settings TWEET_TEXT and TWEET_TEXT_WITH_TOPIC to use own tweet
 	  templates
+	* fixed: allow utf-8 in TWEET_TEXT and TWEET_TEXT_WITH_TOPIC

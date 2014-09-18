@@ -30,12 +30,12 @@ def tweet_game(sender, instance, created, **kwargs):
                               TWITTER_ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
         if game.description:
-            tweet = TWEET_TEXT_WITH_TOPIC.format(
+            tweet = unicode(TWEET_TEXT_WITH_TOPIC, "utf-8").format(
                 domain=game.site.domain,
                 absolute_url=game.get_absolute_url(),
                 topic=game.description)
         else:
-            tweet = TWEET_TEXT.format(
+            tweet = unicode(TWEET_TEXT, "utf-8").format(
                 domain=game.site.domain,
                 absolute_url=game.get_absolute_url())
         api.update_status(tweet)
