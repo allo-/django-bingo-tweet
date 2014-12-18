@@ -19,10 +19,11 @@ class install_lib(_install_lib):
 setup(name='django-bingo-tweets',
       description='Bingo Tweets',
       long_description='Tweet if a new game '
-      'in is created in a django-bingo instance',
+      'is created in a django-bingo instance',
       author='Alexander Schier',
       author_email='allo@laxu.de',
-      version='1.0.0',
+      version='1.0.1',
+      url='https://github.com/allo-/django-bingo-tweet',
       packages=['bingo_tweets'],
       package_data={'bingo_tweets': ['locale/*/LC_MESSAGES/*.*']},
       include_package_data=True,
