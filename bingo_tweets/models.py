@@ -26,12 +26,12 @@ def tweet_game(sender, instance, created, **kwargs):
     if created and TWITTER_API_KEY and TWITTER_API_SECRET and \
        TWITTER_ACCESS_TOKEN and TWITTER_ACCESS_TOKEN_SECRET:
         if game.description:
-            tweet = unicode(TWEET_TEXT_WITH_TOPIC, "utf-8").format(
+            tweet = str(TWEET_TEXT_WITH_TOPIC, "utf-8").format(
                 domain=game.site.domain,
                 absolute_url=game.get_absolute_url(),
                 topic=game.description)
         else:
-            tweet = unicode(TWEET_TEXT, "utf-8").format(
+            tweet = str(TWEET_TEXT, "utf-8").format(
                 domain=game.site.domain,
                 absolute_url=game.get_absolute_url())
         try:
