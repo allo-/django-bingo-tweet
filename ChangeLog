@@ -1,3 +1,6 @@
+django-bingo 1.1.0 (2020-03-01):
+	* changed: Use a configuration model instead of settings.py
+
 django-bingo 1.0.1 (2014-12-18):
 	* fixed: only tweet on Game creation, not when editing Game objects.
 	* added: settings TWEET_TEXT and TWEET_TEXT_WITH_TOPIC to use own tweet
